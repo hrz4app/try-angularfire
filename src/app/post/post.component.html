@@ -1,0 +1,42 @@
+<div class="section">
+  <app-add-post></app-add-post>
+  <div class="row">
+    <ul class="collapsible">
+      <li *ngFor="let post of allPosts | async">
+        <div class="collapsible-header">
+          <i class="material-icons">chevron_right</i>
+          {{ post.title }} || Created:
+          <strong *ngIf="post.created">{{ post.created.toDate() | timeAgo }}</strong>&nbsp;Updated:
+          <strong *ngIf="post.updated">{{ post.updated.toDate() | timeAgo }}</strong>
+        </div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="title" type="text" placeholder="Title" [(ngModel)]="post.title">
+            </div>
+            <div class="input-field col s6">
+              <textarea name="body" class="materialize-textarea validate" [(ngModel)]="post.body"></textarea>
+            </div>
+            <button (click)="update(post)" class="btn orange">Update</button>
+            <button (click)="read(post)" data-target="readModal" class="btn green modal-trigger">Read</button>
+            <button (click)="delete(post)" class="btn red">Delete</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="readModal" class="modal bottom-sheet">
+  <div *ngIf="singlePost" class="modal-content">
+    <h4>{{ (singlePost | async)?.title }}</h4>
+    <p>{{ (singlePost | async)?.body }}</p>
+    <p>
+      <strong>Created At: </strong>
+      {{ (singlePost | async)?.created.toDate() | date:'HH:mm:ss dd-MM-yyyy' }}
+    </p>
+    <p>
+      <strong>Updated At: </strong>
+      {{ (singlePost | async)?.updated.toDate() | date:'HH:mm:ss dd-MM-yyyy' }}
+    </p>
+  </div>
+</div>

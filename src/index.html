@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TryAngularfire</title>
+  <base href="/">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sidenavEl = document.querySelectorAll('.sidenav');
+      var sidenav = M.Sidenav.init(sidenavEl);
+      var collapsibleEl = document.querySelectorAll('.collapsible');
+      var collapsible = M.Collapsible.init(collapsibleEl);
+      var modalEl = document.querySelectorAll('.modal');
+      var modal = M.Modal.init(modalEl);
+    });
+  </script>
+</body>
+</html>
